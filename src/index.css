@@ -6,44 +6,48 @@
 
 @layer base {
   :root {
-    --background: 250 100% 98%;
-    --foreground: 260 30% 15%;
+    --background: 270 100% 5%;
+    --foreground: 280 100% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 260 30% 15%;
+    --card: 270 50% 10%;
+    --card-foreground: 280 100% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 260 30% 15%;
+    --popover: 270 50% 10%;
+    --popover-foreground: 280 100% 95%;
 
-    --primary: 271 91% 65%;
+    --primary: 280 100% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 328 86% 70%;
+    --secondary: 320 100% 50%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 250 100% 97%;
-    --muted-foreground: 260 15% 45%;
+    --muted: 270 30% 20%;
+    --muted-foreground: 280 20% 60%;
 
-    --accent: 24 100% 67%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 280 100% 70%;
+    --accent-foreground: 270 100% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 271 40% 90%;
-    --input: 271 40% 90%;
-    --ring: 271 91% 65%;
+    --border: 280 50% 30%;
+    --input: 280 50% 20%;
+    --ring: 280 100% 60%;
 
     --radius: 1rem;
 
-    --sidebar-background: 260 50% 10%;
-    --sidebar-foreground: 250 100% 98%;
-    --sidebar-primary: 271 91% 65%;
+    --sidebar-background: 270 80% 8%;
+    --sidebar-foreground: 280 100% 95%;
+    --sidebar-primary: 280 100% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 260 40% 20%;
-    --sidebar-accent-foreground: 250 100% 98%;
-    --sidebar-border: 260 30% 25%;
-    --sidebar-ring: 271 91% 65%;
+    --sidebar-accent: 270 50% 15%;
+    --sidebar-accent-foreground: 280 100% 95%;
+    --sidebar-border: 280 50% 25%;
+    --sidebar-ring: 280 100% 60%;
+
+    --neon-purple: 280 100% 60%;
+    --neon-pink: 320 100% 50%;
+    --dark-bg: 270 100% 5%;
   }
 
   .dark {
@@ -102,5 +106,71 @@
   h5,
   h6 {
     font-family: "Montserrat", sans-serif;
+  }
+}
+
+@layer utilities {
+  .neon-glow {
+    text-shadow:
+      0 0 10px hsl(var(--neon-purple)),
+      0 0 20px hsl(var(--neon-purple)),
+      0 0 30px hsl(var(--neon-purple));
+  }
+
+  .neon-border {
+    box-shadow:
+      0 0 10px hsl(var(--neon-purple)),
+      0 0 20px hsl(var(--neon-purple)),
+      inset 0 0 10px hsl(var(--neon-purple));
+  }
+
+  .neon-pink-glow {
+    text-shadow:
+      0 0 10px hsl(var(--neon-pink)),
+      0 0 20px hsl(var(--neon-pink)),
+      0 0 30px hsl(var(--neon-pink));
+  }
+
+  .tap-button {
+    transition: transform 0.1s ease;
+    filter: drop-shadow(0 0 20px hsl(var(--neon-purple)))
+      drop-shadow(0 0 40px hsl(var(--neon-pink)));
+  }
+
+  .tap-button:active {
+    transform: scale(0.95);
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-neon {
+    0%,
+    100% {
+      box-shadow:
+        0 0 10px hsl(var(--neon-purple)),
+        0 0 20px hsl(var(--neon-purple));
+    }
+    50% {
+      box-shadow:
+        0 0 20px hsl(var(--neon-purple)),
+        0 0 40px hsl(var(--neon-purple)),
+        0 0 60px hsl(var(--neon-pink));
+    }
+  }
+
+  .animate-pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite;
   }
 }
